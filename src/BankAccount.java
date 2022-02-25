@@ -41,13 +41,18 @@ public class BankAccount {
 	public void Credited(int newBalance) {
 		this.numberOfcredited++;
 		this.balance += newBalance;
-		this.operation.add(new Operation(newBalance, "Credited"));
+		this.operation.add(new Operation(newBalance, "Credited", false));
 	}
 
 	public void Debit(int newBalance) {
-		this.balance -= newBalance;
 		this.numberOfdebit++;
-		this.operation.add(new Operation(-newBalance, "Debit"));
+		if (this.balance < newBalance) {
+			this.operation.add(new Operation(-newBalance, "Debit", true));
+			System.out.println("Operation failed");
+		} else {
+			this.balance -= newBalance;
+			this.operation.add(new Operation(-newBalance, "Debit", false));
+		}
 	}
 
 	// setData

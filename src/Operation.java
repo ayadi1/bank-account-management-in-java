@@ -4,11 +4,13 @@ public class Operation {
 	private Date date;
 	private int balance;
 	private String type;
+	private boolean isFailed;
 
-	public Operation(int balance, String type) {
+	public Operation(int balance, String type, boolean isFailed) {
 		this.balance = balance;
 		this.type = type;
 		this.date = new Date();
+		this.isFailed = isFailed;
 	}
 
 	// methods
@@ -26,7 +28,11 @@ public class Operation {
 	}
 
 	public String toString() {
-		return "type : " + this.type + " | Balance : " + this.balance + " | Date : " + this.date.toString();
+		return "type : " + this.type + " | Balance : " + this.balance + "| isFailed : " + this.isFailed + " | Date : "
+				+ this.date.toString();
 	}
 
+	public boolean GetIsFailed() {
+		return this.isFailed;
+	}
 }
